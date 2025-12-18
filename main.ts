@@ -15,7 +15,11 @@ bluetooth.onUartDataReceived(serial.delimiters(Delimiters.NewLine), function () 
         pins.servoWritePin(AnalogPin.P0, 0)
     }
     if (receivedString == "red") {
-    	
+        sum += blue
+        pins.servoWritePin(AnalogPin.P0, 180)
+        basic.showNumber(sum)
+        basic.pause(1000)
+        pins.servoWritePin(AnalogPin.P0, 0)
     }
     if (receivedString == "yellow") {
     	
@@ -31,5 +35,6 @@ let blue = 0
 let sum = 0
 sum = 0
 blue = 1
+let red = 1
 bluetooth.startUartService()
 basic.showIcon(IconNames.Square)
